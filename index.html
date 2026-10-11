@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案 | SS Designs様 Spicy トップページ デザイン統合＆実装</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Spicyロゴの5色をベースに再構成 */
+    --bg: #F4F8FF;
+    --bg-soft: #EAF3FF;
+    --ink: #14213D;
+    --ink-soft: #4A5571;
+    --blue: #0050D7;
+    --sky: #05AAFD;
+    --yellow: #FFE54D;
+    --pink: #F32077;
+    --green: #9FCC00;
+    --card: #FFFFFF;
+    --line: #DCE6F7;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .num, .logo{ font-family: 'Space Grotesk', 'Zen Kaku Gothic New', sans-serif; }
+  .jp-head{ font-family: 'Zen Kaku Gothic New', sans-serif; }
+  .pop{ font-family: 'M PLUS Rounded 1c', 'Zen Kaku Gothic New', sans-serif; font-weight: 800; }
+  a{ color: inherit; text-decoration: none; }
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== Header ===== */
+  header{ position: relative; z-index: 10; padding: 26px 0 0; }
+  .header-inner{
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1080px; margin: 0 auto; padding: 0 24px;
+  }
+  .logo{ display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.04em; }
+  .logo-mark{
+    width: 26px; height: 26px; border-radius: 50% 50% 50% 4px;
+    background: conic-gradient(from 200deg, var(--blue), var(--sky), var(--green), var(--yellow), var(--pink), var(--blue));
+    position: relative;
+  }
+  .logo-mark::after{ content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--bg); }
+  .header-tag{
+    font-size: 0.75rem; color: var(--ink-soft); letter-spacing: 0.08em;
+    border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,0.7);
+  }
+
+  /* ===== Hero ===== */
+  .hero{ position: relative; padding: 80px 0 110px; overflow: hidden; }
+  .shape{ position: absolute; pointer-events: none; }
+  .shape.circle-y{ width: 220px; height: 220px; border-radius: 50%; background: var(--yellow); left: -90px; top: 120px; animation: floatA 12s ease-in-out infinite; }
+  .shape.circle-g{ width: 160px; height: 160px; border-radius: 50%; background: var(--green); right: -50px; bottom: 40px; opacity: .9; animation: floatB 14s ease-in-out infinite; }
+  .shape.sparkle{ width: 46px; height: 46px; animation: twinkle 3.2s ease-in-out infinite; }
+  .shape.sparkle svg{ width: 100%; height: 100%; display: block; }
+  .shape.zig{ width: 120px; right: 8%; top: 40px; animation: floatB 10s ease-in-out infinite; }
+  @keyframes floatA{ 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(24px, 30px); } }
+  @keyframes floatB{ 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(-26px, -18px); } }
+  @keyframes twinkle{ 0%,100%{ transform: scale(1) rotate(0); opacity: 1; } 50%{ transform: scale(.7) rotate(20deg); opacity: .6; } }
+
+  .hero-content{
+    position: relative; z-index: 2; max-width: 1080px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: center;
+  }
+  .tag{
+    display: inline-block; font-size: 0.78rem; letter-spacing: 0.1em; color: var(--blue);
+    background: rgba(255,255,255,0.85); border: 1px solid var(--line);
+    padding: 7px 16px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .hero h1{
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900;
+    font-size: clamp(1.9rem, 4.6vw, 3.2rem); line-height: 1.45; margin-bottom: 24px;
+  }
+  .hero h1 .spicy-word{ display: inline-block; }
+  .hero h1 .spicy-word span{ display: inline-block; animation: bounceIn .7s cubic-bezier(.3,1.6,.5,1) both; }
+  @keyframes bounceIn{ from{ transform: translateY(30px) scale(.6); opacity: 0; } to{ transform: none; opacity: 1; } }
+  .c-blue{ color: var(--blue); } .c-sky{ color: var(--sky); } .c-pink{ color: var(--pink); }
+  .c-green{ color: #7FA800; } .c-yellow{ color: #E8B800; }
+  .hero h1 .sub{ display: block; font-size: .62em; margin-top: 10px; line-height: 1.6; }
+  .hero h1 .underline{
+    background: linear-gradient(transparent 62%, var(--yellow) 62%);
+    padding: 0 2px;
+  }
+  .hero p{ max-width: 560px; font-size: 1rem; color: var(--ink-soft); margin-bottom: 34px; }
+  .hero-meta{ display: flex; flex-wrap: wrap; gap: 12px; }
+  .meta-pill{
+    font-size: 0.82rem; background: var(--card); border: 1px solid var(--line);
+    padding: 10px 16px; border-radius: 12px; color: var(--ink-soft);
+    box-shadow: 0 10px 30px -22px rgba(20,33,61,0.4);
+  }
+  .meta-pill b{ color: var(--ink); }
+  .client-card{
+    background: var(--card); border-radius: 28px; padding: 30px 26px 22px;
+    box-shadow: 0 30px 60px -34px rgba(0,80,215,0.45); border: 1px solid var(--line);
+    transform: rotate(2deg); text-align: center; position: relative;
+  }
+  .client-card svg{ width: 100%; height: auto; display: block; }
+  .client-card .cap{ font-size: 0.75rem; color: var(--ink-soft); margin-top: 12px; letter-spacing: .06em; }
+  .client-card .palette{ display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+  .client-card .palette i{ width: 22px; height: 22px; border-radius: 50%; display: block; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line); }
+
+  /* ===== Section common ===== */
+  section{ position: relative; padding: 86px 0; }
+  .section-label{
+    font-size: 0.78rem; letter-spacing: 0.14em; color: var(--blue); font-weight: 600;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before{
+    content: ""; width: 30px; height: 4px; border-radius: 4px; display: inline-block;
+    background: linear-gradient(90deg, var(--blue) 0 25%, var(--sky) 25% 50%, var(--yellow) 50% 75%, var(--pink) 75%);
+  }
+  .section-title{
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 700;
+    font-size: clamp(1.45rem, 3vw, 2.05rem); margin-bottom: 18px; max-width: 840px; line-height: 1.6;
+  }
+  .section-lead{ color: var(--ink-soft); max-width: 720px; font-size: .96rem; }
+  .fade-in{ opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible{ opacity: 1; transform: none; }
+
+  /* ===== Understanding: 2案の読み解き ===== */
+  .understanding{ background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%); }
+  .cases{ display: grid; grid-template-columns: 1fr auto 1fr; gap: 22px; align-items: stretch; margin-top: 40px; }
+  .case{
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 22px;
+    box-shadow: 0 20px 50px -34px rgba(20,33,61,0.35);
+  }
+  .case.a{ border-top: 6px solid var(--yellow); }
+  .case.b{ border-top: 6px solid var(--sky); }
+  .case h4{ font-family: 'Space Grotesk', sans-serif; font-size: .8rem; letter-spacing: .12em; color: var(--ink-soft); }
+  .case h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1.12rem; margin: 2px 0 14px; }
+  .case ul{ list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .case li{ font-size: .87rem; color: var(--ink-soft); padding-left: 18px; position: relative; line-height: 1.7; }
+  .case li::before{ content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; }
+  .case.a li::before{ background: var(--pink); }
+  .case.b li::before{ background: var(--blue); }
+  .case li b{ color: var(--ink); }
+  .plus{ align-self: center; font-family: 'Space Grotesk'; font-size: 2rem; font-weight: 700; color: var(--pink); }
+
+  /* 縮小ワイヤー（デザイン案の構成を模式化） */
+  .wire{
+    background: #F7F9FD; border: 1px solid var(--line); border-radius: 12px; padding: 10px;
+    display: flex; flex-direction: column; gap: 6px; font-size: .62rem; color: #5B6787; letter-spacing: .04em;
+  }
+  .wire div{ border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4px; line-height: 1.3; }
+  .w-hero1{ height: 62px; background: linear-gradient(135deg, #3A6FB8, #B4875C); color: #fff; font-weight: 800; }
+  .w-hero1 span{ text-shadow: 0 1px 0 rgba(0,0,0,.25); }
+  .w-concept{ height: 34px; background: #fff; border: 1px dashed var(--line); }
+  .w-review-y{ height: 38px; background: var(--yellow); color: #8A6A00; }
+  .w-map-flat{ height: 46px; background: #DDEBFB; color: var(--blue); }
+  .w-nav{ height: 16px; background: #fff; border: 1px solid var(--line); justify-content: space-between !important; }
+  .w-hero2{ height: 56px; background: linear-gradient(135deg, #A9D5F5, #F6E9A8); color: var(--ink); font-weight: 800; }
+  .w-row{ display: grid !important; grid-template-columns: repeat(4,1fr); gap: 4px; padding: 0 !important; }
+  .w-row i{ height: 20px; border-radius: 4px; background: #fff; border: 1px solid var(--line); display: block; }
+  .w-map2{ height: 36px; background: #E3F2DC; color: #4B7A00; }
+  .w-search{ height: 14px; background: var(--blue); color: #fff; }
+
+  .merge-arrow{
+    text-align: center; margin: 28px auto 0; font-weight: 700; color: var(--blue);
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1.02rem;
+  }
+  .merge-arrow .arr{ display: block; font-size: 1.6rem; color: var(--pink); line-height: 1; margin-bottom: 6px; animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(6px); } }
+  .principle{
+    margin-top: 18px; background: var(--card); border-radius: 18px; border: 2px solid var(--blue);
+    padding: 22px 24px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
+  }
+  .principle div{ font-size: .88rem; color: var(--ink-soft); }
+  .principle b{ display: block; color: var(--ink); font-size: .98rem; margin-bottom: 4px; font-family: 'Zen Kaku Gothic New', sans-serif; }
+
+  /* ===== Integration plan ===== */
+  .plan-list{ margin-top: 40px; display: flex; flex-direction: column; gap: 14px; counter-reset: plan; }
+  .plan-item{
+    display: grid; grid-template-columns: 56px 1fr 1fr; gap: 18px; align-items: start;
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .plan-item:hover{ transform: translateX(6px); box-shadow: -6px 0 0 var(--yellow), 0 18px 40px -30px rgba(20,33,61,.45); }
+  .plan-no{ font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.5rem; color: transparent; -webkit-text-stroke: 1.3px var(--blue); line-height: 1.2; }
+  .plan-item h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1rem; margin-bottom: 4px; }
+  .plan-item p{ font-size: .86rem; color: var(--ink-soft); }
+  .src{ display: inline-block; font-size: .68rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin: 0 4px 6px 0; letter-spacing: .04em; }
+  .src.a{ background: #FFF5BF; color: #866600; }
+  .src.b{ background: #DDF2FF; color: #00589A; }
+  .motion{ font-size: .84rem; color: var(--ink-soft); background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+  .motion b{ color: var(--pink); font-size: .72rem; letter-spacing: .1em; display: block; font-family: 'Space Grotesk'; }
+
+  /* ===== Value cards ===== */
+  .value-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+  .value-card{
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px 24px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease; position: relative; overflow: hidden;
+  }
+  .value-card::after{ content:""; position: absolute; right: -30px; bottom: -30px; width: 110px; height: 110px; border-radius: 50%; opacity: 0.16; }
+  .value-card:nth-child(5n+1)::after{ background: var(--blue); }
+  .value-card:nth-child(5n+2)::after{ background: var(--sky); }
+  .value-card:nth-child(5n+3)::after{ background: var(--yellow); opacity: .45; }
+  .value-card:nth-child(5n+4)::after{ background: var(--pink); }
+  .value-card:nth-child(5n+5)::after{ background: var(--green); opacity: .3; }
+  .value-card:hover{ transform: translateY(-8px); box-shadow: 0 30px 60px -30px rgba(20,33,61,0.4); }
+  .value-card .num{ font-size: 2rem; font-weight: 700; color: transparent; -webkit-text-stroke: 1.4px var(--blue); margin-bottom: 14px; display: block; }
+  .value-card h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1.05rem; margin-bottom: 10px; }
+  .value-card p{ font-size: 0.88rem; color: var(--ink-soft); }
+
+  /* ===== Confirm ===== */
+  .confirm{ background: var(--bg-soft); }
+  .confirm-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 34px; }
+  .confirm-item{ background: var(--card); border-radius: 14px; padding: 18px 20px; border: 1px solid var(--line); border-left: 5px solid var(--sky); }
+  .confirm-item h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: .98rem; margin-bottom: 4px; }
+  .confirm-item p{ font-size: .86rem; color: var(--ink-soft); }
+
+  /* ===== Timeline ===== */
+  .timeline{ margin-top: 46px; position: relative; }
+  .timeline::before{
+    content: ""; position: absolute; left: 29px; top: 10px; bottom: 10px; width: 3px; border-radius: 3px;
+    background: linear-gradient(180deg, var(--blue), var(--sky), var(--green), var(--yellow), var(--pink)); opacity: 0.55;
+  }
+  .step{ display: flex; gap: 24px; margin-bottom: 40px; position: relative; }
+  .step:last-child{ margin-bottom: 0; }
+  .step-num{
+    flex: 0 0 60px; height: 60px; border-radius: 50%; background: var(--card); border: 2px solid var(--line);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--blue); position: relative; z-index: 2;
+  }
+  .step-body h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1.05rem; margin-bottom: 8px; padding-top: 10px; }
+  .step-body p{ font-size: 0.9rem; color: var(--ink-soft); max-width: 600px; }
+  .step-tag{ display: inline-block; font-size: 0.72rem; color: var(--pink); background: rgba(243,32,119,0.09); padding: 3px 10px; border-radius: 999px; margin-left: 10px; vertical-align: middle; }
+
+  /* ===== Closing ===== */
+  .closing{ position: relative; padding: 106px 0 96px; text-align: center; overflow: hidden; }
+  .closing-bg{ position: absolute; inset: 0; background: linear-gradient(135deg, #003FAE, var(--blue) 50%, var(--sky)); z-index: 0; }
+  .closing-bg::before, .closing-bg::after{ content:""; position: absolute; border-radius: 50%; }
+  .closing-bg::before{ width: 240px; height: 240px; background: var(--yellow); left: -80px; bottom: -90px; opacity: .9; }
+  .closing-bg::after{ width: 150px; height: 150px; background: var(--pink); right: -40px; top: -40px; opacity: .85; }
+  .closing-inner{ position: relative; z-index: 2; color: #fff; max-width: 700px; margin: 0 auto; padding: 0 24px; }
+  .closing h2{ font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 900; font-size: clamp(1.5rem, 3.6vw, 2.2rem); margin-bottom: 22px; line-height: 1.6; }
+  .closing p{ color: rgba(255,255,255,0.9); margin-bottom: 36px; font-size: 0.96rem; }
+  .cta-btn{
+    display: inline-flex; align-items: center; gap: 10px; background: var(--yellow); color: var(--ink);
+    font-weight: 700; padding: 16px 36px; border-radius: 999px; font-size: 0.98rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 8px 0 #D9B800;
+  }
+  .cta-btn:hover{ transform: translateY(3px); box-shadow: 0 5px 0 #D9B800; }
+  .closing-note{ margin-top: 26px; font-size: 0.8rem; color: rgba(255,255,255,0.78); }
+
+  footer{ padding: 36px 0; text-align: center; font-size: 0.78rem; background: var(--ink); color: rgba(255,255,255,0.6); }
+  footer .logo{ justify-content: center; color: #fff; margin-bottom: 10px; }
+  footer .logo-mark::after{ background: var(--ink); }
+
+
+  /* ===== Reference / Deliverables ===== */
+  .ref-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 34px; }
+  .ref-item{ background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; position: relative; overflow: hidden; }
+  .ref-item::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:5px; }
+  .ref-item:nth-child(4n+1)::before{ background: var(--pink); }
+  .ref-item:nth-child(4n+2)::before{ background: var(--sky); }
+  .ref-item:nth-child(4n+3)::before{ background: var(--green); }
+  .ref-item:nth-child(4n+4)::before{ background: var(--yellow); }
+  .ref-item h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1rem; margin-bottom: 4px; }
+  .ref-item p{ font-size: .86rem; color: var(--ink-soft); }
+  .ref-item .to{ display:block; margin-top: 8px; font-size: .82rem; color: var(--blue); font-weight: 700; }
+  .deliv{ margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .deliv-box{ background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .deliv-box h3{ font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 1.02rem; margin-bottom: 12px; }
+  .deliv-box ul{ list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .deliv-box li{ font-size: .87rem; color: var(--ink-soft); padding-left: 24px; position: relative; }
+  .deliv-box li::before{ content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+  .deliv-box li b{ color: var(--ink); }
+  .deliv-box .note{ margin-top: 12px; font-size: .8rem; color: var(--ink-soft); background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+  @media (max-width: 760px){ .ref-grid, .deliv{ grid-template-columns: 1fr; } }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px){
+    .hero-content{ grid-template-columns: 1fr; }
+    .client-card{ max-width: 340px; margin: 0 auto; }
+    .cases{ grid-template-columns: 1fr; }
+    .plus{ text-align: center; }
+    .principle{ grid-template-columns: 1fr; }
+    .value-grid{ grid-template-columns: repeat(2, 1fr); }
+    .plan-item{ grid-template-columns: 44px 1fr; }
+    .plan-item .motion{ grid-column: 2; }
+  }
+  @media (max-width: 560px){
+    .hero{ padding: 60px 0 90px; }
+    .value-grid, .confirm-grid{ grid-template-columns: 1fr; }
+    .header-tag{ display:none; }
+    .step{ gap: 16px; }
+    .step-num{ flex: 0 0 48px; height: 48px; font-size: 0.85rem; }
+    .timeline::before{ left: 23px; }
+    .plan-item{ grid-template-columns: 1fr; gap: 6px; }
+    .plan-item .motion{ grid-column: 1; }
+    .shape.zig{ display: none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    .fade-in{ opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo"><span class="logo-mark"></span>Kairos</div>
+    <div class="header-tag">PROPOSAL FOR SS Designs ｜ Spicy</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="shape circle-y"></div>
+  <div class="shape circle-g"></div>
+  <div class="shape sparkle" style="left:46%;top:36px;"><svg viewBox="0 0 40 40"><path d="M20 0 C22 13 27 18 40 20 C27 22 22 27 20 40 C18 27 13 22 0 20 C13 18 18 13 20 0Z" fill="#F32077"/></svg></div>
+  <div class="shape sparkle" style="left:6%;bottom:60px;width:34px;height:34px;animation-delay:1.2s;"><svg viewBox="0 0 40 40"><path d="M20 0 C22 13 27 18 40 20 C27 22 22 27 20 40 C18 27 13 22 0 20 C13 18 18 13 20 0Z" fill="#05AAFD"/></svg></div>
+  <svg class="shape zig" viewBox="0 0 120 60" fill="none"><path d="M6 46 L40 14 L48 44 L114 8" stroke="#0050D7" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="hero-content">
+    <div>
+      <span class="tag">KAIROSからのご提案 ｜ Spicy トップページ デザイン統合＆実装</span>
+      <h1>北海道ステイを、もっと
+        <span class="spicy-word pop"><span class="c-sky" style="animation-delay:.1s">S</span><span class="c-pink" style="animation-delay:.18s">P</span><span class="c-green" style="animation-delay:.26s">I</span><span class="c-blue" style="animation-delay:.34s">C</span><span class="c-yellow" style="animation-delay:.42s">Y</span></span>に。<br>
+        <span class="sub">2つの案を、<span class="underline">ひとつの「動く」</span><span class="underline" style="white-space:nowrap">トップページ</span>へ。</span></h1>
+      <p>案1のポップな世界観と、案2の探しやすい情報設計。どちらも捨てずに統合し、スクロールやホバーの“動き”まで含めて、ブラウザで触れるページとしてお届けします。</p>
+      <div class="hero-meta">
+        <div class="meta-pill">対象：<b>トップページ 1ページ</b></div>
+        <div class="meta-pill">範囲：<b>デザイン統合 → レスポンシブ実装</b></div>
+        <div class="meta-pill">ご予算：<b>¥55,000</b> の中でスピード対応</div>
+      </div>
+    </div>
+    <div class="client-card">
+      <svg role="img" aria-label="Spicy ENJOY HOKKAIDO STAY ロゴ" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 933.73 556.59">
+  <defs>
+    <style>
+      .sp-1 {
+        fill: #0050d7;
+      }
+
+      .sp-2 {
+        fill: #05aafd;
+      }
+
+      .sp-3 {
+        fill: #ffe54d;
+      }
+
+      .sp-4 {
+        fill: #fff;
+      }
+
+      .sp-5 {
+        fill: #0253d9;
+      }
+
+      .sp-6 {
+        fill: #f32077;
+      }
+
+      .sp-7 {
+        fill: #9fcc00;
+      }
+    </style>
+  </defs>
+  <g >
+    <g>
+      <path d="M118.65,555.84c-1.85,0-2.77-.92-2.77-2.77v-27.36c0-1.85.92-2.77,2.77-2.77h16.45c1.85,0,2.77.85,2.77,2.54s-.92,2.49-2.77,2.49h-13.82v8.56h12.36c1.85,0,2.77.85,2.77,2.54s-.92,2.54-2.77,2.54h-12.36v9.21h14.34c1.85,0,2.77.83,2.77,2.49s-.92,2.54-2.77,2.54h-16.97Z"/>
+      <path d="M153.15,555.84c-1.79,0-2.68-.92-2.68-2.77v-27.36c0-1.85.89-2.77,2.68-2.77h.61c1.41,0,2.52.61,3.34,1.83l14.29,21.53v-20.59c0-.91.24-1.6.73-2.07.49-.47,1.17-.71,2.04-.71,1.82,0,2.73.92,2.73,2.77v27.36c0,1.85-.86,2.77-2.59,2.77h-.47c-1.44,0-2.55-.61-3.34-1.83l-14.62-22.19v21.25c0,1.85-.91,2.77-2.73,2.77Z"/>
+      <path d="M198.75,556.59c-3.2,0-5.62-.74-7.26-2.23s-2.67-3.5-3.08-6.04c-.16-.91,0-1.62.47-2.14.47-.52,1.19-.78,2.16-.78.85,0,1.47.22,1.88.66.41.44.75,1.08,1.03,1.93.63,2.19,2.23,3.29,4.79,3.29,1.69,0,2.96-.47,3.81-1.41.85-.94,1.27-2.43,1.27-4.47v-19.7c0-1.85.92-2.77,2.77-2.77s2.73.92,2.73,2.77v19.7c0,2.23-.36,4.18-1.08,5.88-.72,1.69-1.86,3-3.41,3.92s-3.58,1.39-6.09,1.39Z"/>
+      <path d="M236.36,556.59c-2.98,0-5.63-.71-7.97-2.12-2.33-1.41-4.16-3.41-5.48-5.99-1.32-2.58-1.97-5.62-1.97-9.1s.66-6.56,1.97-9.14c1.32-2.58,3.14-4.59,5.48-6.02,2.33-1.43,4.99-2.14,7.97-2.14s5.62.71,7.92,2.14c2.3,1.43,4.12,3.43,5.45,6.02,1.33,2.59,2,5.63,2,9.14s-.67,6.51-2,9.1c-1.33,2.59-3.15,4.58-5.45,5.99-2.3,1.41-4.94,2.12-7.92,2.12ZM236.36,551.32c1.97,0,3.68-.49,5.12-1.48,1.44-.99,2.56-2.38,3.36-4.18.8-1.8,1.2-3.89,1.2-6.28s-.4-4.52-1.2-6.32c-.8-1.8-1.92-3.2-3.36-4.18-1.44-.99-3.15-1.48-5.12-1.48s-3.65.49-5.12,1.48c-1.47.99-2.61,2.38-3.41,4.18-.8,1.8-1.2,3.91-1.2,6.32s.4,4.47,1.2,6.28c.8,1.8,1.94,3.2,3.41,4.18,1.47.99,3.18,1.48,5.12,1.48Z"/>
+      <path d="M272.88,555.84c-1.85,0-2.77-.92-2.77-2.77v-11.19l-9.12-15.61c-.66-1.1-.78-1.93-.38-2.49.41-.56,1.25-.85,2.54-.85,1.47,0,2.57.64,3.29,1.93l6.44,11.09,6.35-11.09c.75-1.28,1.86-1.93,3.34-1.93,1.28,0,2.11.32,2.47.96s.26,1.43-.31,2.37l-9.12,15.61v11.19c0,1.85-.91,2.77-2.73,2.77Z"/>
+      <path d="M354.59,555.84c-1.72,0-2.59-.86-2.59-2.59v-27.74c0-1.72.86-2.58,2.59-2.58h.23c1.72,0,2.59.86,2.59,2.58v10.48h14.95v-10.48c0-1.72.88-2.58,2.63-2.58h.28c1.72,0,2.59.86,2.59,2.58v27.74c0,1.72-.86,2.59-2.59,2.59h-.28c-1.76,0-2.63-.86-2.63-2.59v-12.22h-14.95v12.22c0,1.72-.86,2.59-2.59,2.59h-.23Z"/>
+      <path d="M405.31,556.59c-2.98,0-5.63-.71-7.97-2.12-2.33-1.41-4.16-3.41-5.48-5.99-1.32-2.58-1.97-5.62-1.97-9.1s.66-6.56,1.97-9.14c1.32-2.58,3.14-4.59,5.48-6.02,2.33-1.43,4.99-2.14,7.97-2.14s5.62.71,7.92,2.14c2.3,1.43,4.12,3.43,5.45,6.02,1.33,2.59,2,5.63,2,9.14s-.67,6.51-2,9.1c-1.33,2.59-3.15,4.58-5.45,5.99-2.3,1.41-4.94,2.12-7.92,2.12ZM405.31,551.32c1.97,0,3.68-.49,5.12-1.48,1.44-.99,2.56-2.38,3.36-4.18.8-1.8,1.2-3.89,1.2-6.28s-.4-4.52-1.2-6.32c-.8-1.8-1.92-3.2-3.36-4.18-1.44-.99-3.15-1.48-5.12-1.48s-3.65.49-5.12,1.48c-1.47.99-2.61,2.38-3.41,4.18-.8,1.8-1.2,3.91-1.2,6.32s.4,4.47,1.2,6.28c.8,1.8,1.94,3.2,3.41,4.18,1.47.99,3.18,1.48,5.12,1.48Z"/>
+      <path d="M435.44,555.84c-1.79,0-2.68-.92-2.68-2.77v-27.36c0-1.85.89-2.77,2.68-2.77s2.73.92,2.73,2.77v11.52l10.58-12.18c.69-.85,1.32-1.41,1.88-1.69s1.29-.42,2.16-.42c.78,0,1.36.19,1.74.56.38.38.56.83.54,1.36-.02.53-.21,1.03-.59,1.5l-10.53,11.89,11.19,14.24c.38.5.58,1.03.61,1.6s-.15,1.03-.54,1.41-1.04.56-1.95.56-1.7-.18-2.28-.54c-.58-.36-1.09-.84-1.53-1.43l-11.28-15.09v14.06c0,1.85-.91,2.77-2.73,2.77Z"/>
+      <path d="M471.17,555.84c-1.79,0-2.68-.92-2.68-2.77v-27.36c0-1.85.89-2.77,2.68-2.77s2.73.92,2.73,2.77v11.52l10.58-12.18c.69-.85,1.32-1.41,1.88-1.69s1.29-.42,2.16-.42c.78,0,1.36.19,1.74.56.38.38.56.83.54,1.36-.02.53-.21,1.03-.59,1.5l-10.53,11.89,11.19,14.24c.38.5.58,1.03.61,1.6s-.15,1.03-.54,1.41-1.04.56-1.95.56-1.7-.18-2.28-.54c-.58-.36-1.09-.84-1.53-1.43l-11.28-15.09v14.06c0,1.85-.91,2.77-2.73,2.77Z"/>
+      <path d="M504.4,555.84c-.91,0-1.54-.27-1.88-.8-.35-.53-.35-1.25,0-2.16l10.62-27.88c.47-1.38,1.46-2.07,2.96-2.07h.38c1.5,0,2.49.69,2.96,2.07l10.67,27.88c.34.91.34,1.63-.02,2.16s-1,.8-1.9.8h-.89c-1.47,0-2.44-.71-2.91-2.12l-1.83-5.12h-12.65l-1.83,5.12c-.47,1.41-1.44,2.12-2.91,2.12h-.75ZM511.69,543.57h9.12l-4.51-12.83-4.61,12.83Z"/>
+      <path d="M544.78,555.84c-1.79,0-2.68-.92-2.68-2.77v-27.36c0-1.85.89-2.77,2.68-2.77s2.73.92,2.73,2.77v27.36c0,1.85-.91,2.77-2.73,2.77Z"/>
+      <path d="M564.01,555.84c-1.85,0-2.77-.92-2.77-2.77v-27.36c0-1.85.92-2.77,2.77-2.77h7.8c3.29,0,6.13.61,8.53,1.83,2.4,1.22,4.25,3.06,5.55,5.5,1.3,2.44,1.95,5.48,1.95,9.12s-.65,6.63-1.95,9.07c-1.3,2.45-3.15,4.29-5.55,5.52s-5.24,1.86-8.53,1.86h-7.8ZM566.64,550.81h4.75c3.38,0,6.03-.98,7.92-2.94,1.9-1.96,2.84-4.79,2.84-8.49s-.95-6.57-2.84-8.51c-1.9-1.94-4.54-2.92-7.92-2.92h-4.75v22.85Z"/>
+      <path d="M612.76,556.59c-2.98,0-5.63-.71-7.97-2.12-2.33-1.41-4.16-3.41-5.48-5.99-1.32-2.58-1.97-5.62-1.97-9.1s.66-6.56,1.97-9.14c1.32-2.58,3.14-4.59,5.48-6.02,2.33-1.43,4.99-2.14,7.97-2.14s5.62.71,7.92,2.14,4.12,3.43,5.45,6.02c1.33,2.59,2,5.63,2,9.14s-.67,6.51-2,9.1c-1.33,2.59-3.15,4.58-5.45,5.99s-4.94,2.12-7.92,2.12ZM612.76,551.32c1.97,0,3.68-.49,5.12-1.48,1.44-.99,2.56-2.38,3.36-4.18.8-1.8,1.2-3.89,1.2-6.28s-.4-4.52-1.2-6.32c-.8-1.8-1.92-3.2-3.36-4.18s-3.15-1.48-5.12-1.48-3.65.49-5.12,1.48c-1.47.99-2.61,2.38-3.41,4.18-.8,1.8-1.2,3.91-1.2,6.32s.4,4.47,1.2,6.28c.8,1.8,1.93,3.2,3.41,4.18,1.47.99,3.18,1.48,5.12,1.48Z"/>
+      <path d="M706.16,556.49c-2.32,0-4.48-.4-6.49-1.2-2.01-.8-3.73-2.14-5.17-4.02-.53-.75-.71-1.45-.54-2.09.17-.64.63-1.17,1.39-1.58.72-.44,1.38-.57,1.97-.4.59.17,1.19.59,1.79,1.25.85.91,1.86,1.62,3.03,2.12,1.17.5,2.58.75,4.21.75,2.19,0,3.74-.4,4.63-1.2.89-.8,1.34-1.89,1.34-3.27,0-.88-.2-1.63-.59-2.26-.39-.63-1.21-1.21-2.44-1.76-1.24-.55-3.14-1.1-5.71-1.67-3.04-.72-5.29-1.86-6.75-3.43-1.46-1.57-2.19-3.56-2.19-5.97,0-1.91.46-3.6,1.39-5.05.92-1.46,2.22-2.59,3.9-3.41,1.68-.81,3.64-1.22,5.9-1.22s4.4.41,6.16,1.22c1.75.82,3.23,1.87,4.42,3.15.59.66.83,1.32.71,1.97-.13.66-.53,1.25-1.22,1.79-.69.56-1.35.78-1.97.66-.63-.12-1.25-.49-1.88-1.08-.78-.72-1.68-1.32-2.68-1.79-1-.47-2.19-.71-3.57-.71-1.63,0-2.95.35-3.97,1.06-1.02.71-1.53,1.76-1.53,3.17,0,.63.15,1.23.45,1.81.3.58.96,1.14,1.97,1.67,1.02.53,2.59,1.05,4.72,1.55,3.76.85,6.47,2.12,8.13,3.81s2.49,3.82,2.49,6.39c0,3.13-1.09,5.54-3.27,7.22-2.18,1.68-5.05,2.51-8.63,2.51Z"/>
+      <path d="M741.33,555.84c-1.85,0-2.77-.92-2.77-2.77v-25.1h-7.15c-1.85,0-2.77-.83-2.77-2.49s.92-2.54,2.77-2.54h19.7c1.88,0,2.82.85,2.82,2.54s-.94,2.49-2.82,2.49h-7.05v25.1c0,1.85-.91,2.77-2.73,2.77Z"/>
+      <path d="M761.07,555.84c-.91,0-1.54-.27-1.88-.8-.35-.53-.35-1.25,0-2.16l10.62-27.88c.47-1.38,1.46-2.07,2.96-2.07h.38c1.5,0,2.49.69,2.96,2.07l10.67,27.88c.34.91.34,1.63-.02,2.16s-1,.8-1.9.8h-.89c-1.47,0-2.44-.71-2.91-2.12l-1.83-5.12h-12.65l-1.83,5.12c-.47,1.41-1.44,2.12-2.91,2.12h-.75ZM768.36,543.57h9.12l-4.51-12.83-4.61,12.83Z"/>
+      <path d="M805.49,555.84c-1.85,0-2.77-.92-2.77-2.77v-11.19l-9.12-15.61c-.66-1.1-.78-1.93-.38-2.49.41-.56,1.25-.85,2.54-.85,1.47,0,2.57.64,3.29,1.93l6.44,11.09,6.35-11.09c.75-1.28,1.86-1.93,3.34-1.93,1.28,0,2.11.32,2.47.96.36.64.26,1.43-.31,2.37l-9.12,15.61v11.19c0,1.85-.91,2.77-2.73,2.77Z"/>
+    </g>
+    <g>
+      <path class="sp-2" d="M286.03,159.56c-12.11-11.62-65.04-38.39-114.62-10.75-56.49,31.5-57.52,92.51-35.82,116.86,19.41,21.78,50.15,36.27,59.1,40.74s24.3,19.44,11.19,37.61c-13.73,19.03-45.67,9.85-46.57-10.3s-24.04-26.21-40.6-15.46-25.66,40.09-.59,68.75,87.35,39.34,125.82-2.24c29.75-32.16,30.55-70.13,15.88-96.03-15.16-26.77-54.81-39.74-65.14-48.14-11.95-9.73-7.27-33.89,17.01-38.06,14.58-2.5,28.24,2.18,35.82,9.85,11.31,11.44,29.57,10.75,42.32-4.86,15.67-19.18,7.38-37.22-3.81-47.97Z"/>
+      <path class="sp-6" d="M399.91,236.48c-12.96-13.33-47.01-20.73-73.29-8.14s-37.76,29.98-34.79,54.04c2.32,18.83,5.18,53.67-8.14,87.73s-15.55,49.6,1.85,53.3c17.4,3.7,26.65-10.73,29.61-16.66,2.96-5.92,9.99-45.16,11.1-55.52,10.36,10.73,62.57,23.75,83.66-29.98,15.98-40.73,2.96-71.44-9.99-84.77ZM378.44,297.55c-1.48,10.36-6.29,24.06-25.91,22.95-19.62-1.11-20.65-22.14-17.77-34.05,2.23-9.22,9.86-18.59,24.06-16.29,18.28,2.96,21.1,17.03,19.62,27.39Z"/>
+      <path class="sp-7" d="M435.86,237.94c0,16.24.22,39.88-2.39,61.9s-8.58,55.97-6.72,67.16c1.87,11.19,10.82,17.54,25.37,17.54s20.55-6.88,22.57-18.47c3.2-18.38-.09-38.89,2.52-65.01s7.38-48.98,8.87-62.42-5.37-24.74-24.63-25.37c-17.37-.57-25.6,9.07-25.6,24.67Z"/>
+      <path class="sp-1" d="M579.76,219.24c-22.41,0-72.44,18.24-83.39,64.63s-1.56,94.33,52.12,103.72,69.84-20.33,75.57-28.67,9.54-21.04-4.36-33.37-27.29,2.1-29.65,3.67-16.27,16.27-35.16,3.94-11.54-37-1.84-45.13,18.37-20.47,35.95-12.07c17.58,8.4,25.19,10.23,34.63-2.62,9.45-12.86,13.12-28.86-3.67-41.98s-40.2-12.11-40.2-12.11Z"/>
+      <path class="sp-6" d="M660.56,235.04c-6.99,12.46-29.42,62.2-8.13,98.07s60.8,37.26,93.3,7.85c-1.63,18.13-6.16,48.47-30.54,64.16s-32.88-.95-34.46-10.65c-1.7-10.44-3.43-20.37-17.44-21.77s-34.11,8.04-31.59,36.34,29.46,60.11,76.21,50.15c49.31-10.5,82.14-51.78,88.71-122.79s6.62-90.97,3.72-101.41c-3.53-12.69-14.78-19.84-31.19-16.75s-22.36,12.37-23.31,25.45-1.81,29.24-3.33,36.63c-3.87,18.86-16.65,38.77-36.87,33.77s-13.08-33.54-1.9-59.22-5.23-34.25-12.37-35.44c-7.14-1.19-20.48-2.8-30.81,15.61Z"/>
+      <path class="sp-1" d="M114.85,169.61c-1.71,0-3.41-.73-4.6-2.14l-26.16-31.12c-2.13-2.54-1.8-6.32.73-8.45,2.54-2.13,6.32-1.8,8.45.73l26.16,31.12c2.13,2.54,1.8,6.32-.73,8.45-1.12.95-2.5,1.41-3.86,1.41Z"/>
+      <path class="sp-1" d="M100.42,195.77c-.52,0-1.04-.07-1.56-.21l-46.91-12.63c-3.2-.86-5.1-4.15-4.23-7.35.86-3.2,4.15-5.09,7.35-4.23l46.91,12.63c3.2.86,5.1,4.15,4.23,7.35-.72,2.68-3.14,4.44-5.79,4.44Z"/>
+      <circle class="sp-6" cx="61.93" cy="251.71" r="20.47"/>
+      <circle class="sp-7" cx="128.67" cy="436.28" r="15.11"/>
+      <circle class="sp-3" cx="466.06" cy="153.82" r="34.12"/>
+      <path class="sp-5" d="M892.42,36.35c2.9-2.75,5.51-5.23,7.35-6.99,12.63-12.02,10.44-16.57,8.31-18.69s-6.68-4.31-18.69,8.31c-1.75,1.84-4.24,4.45-6.99,7.35-8.28-3.24-40.02-12.58-43.57-13.77-2.21-.74-4.32.04-5.31,1.29-1.22,1.54-.93,3.72.68,5,3.25,2.58,23.67,20.5,30.47,26.75-4.91,5.63-12.62,14.64-17.55,20.57-4.56-1.67-18.26-5.71-19.85-6.24-1.03-.35-2.02.02-2.49.6-.57.72-.44,1.74.32,2.34,1.51,1.2,10.92,9.46,14.19,12.45-2.01,2.12-3.37,3.94-1.59,5.72s3.6.42,5.72-1.59c3,3.27,11.26,12.68,12.45,14.19.6.76,1.62.89,2.34.32.58-.47.95-1.45.6-2.49-.53-1.59-4.57-15.29-6.24-19.85,5.93-4.93,14.94-12.64,20.57-17.55,6.25,6.8,24.18,27.22,26.75,30.47,1.28,1.61,3.46,1.91,5,.68,1.25-.99,2.03-3.1,1.29-5.31-1.19-3.55-10.53-35.29-13.77-43.57Z"/>
+      <path class="sp-4" d="M142.49,212.28c-.67,0-1.35-.11-2.02-.35-3.12-1.11-4.75-4.55-3.64-7.67,12.38-34.7,48.2-48.18,55.25-50.54,3.14-1.05,6.54.65,7.59,3.79,1.05,3.14-.65,6.54-3.79,7.59-16.93,5.64-39.59,20.34-47.74,43.18-.88,2.45-3.19,3.99-5.65,3.99Z"/>
+      <path class="sp-4" d="M310.66,268.62c-1.06,0-2.14-.28-3.12-.88-2.83-1.73-3.72-5.42-2-8.25,6.61-10.83,20.16-22.99,35.55-25.72,3.26-.58,6.38,1.6,6.96,4.86s-1.6,6.38-4.86,6.96c-11.65,2.07-22.37,11.89-27.4,20.15-1.13,1.85-3.1,2.88-5.13,2.88Z"/>
+      <path class="sp-4" d="M513.49,290.87c-.6,0-1.21-.09-1.81-.28-3.16-1-4.91-4.37-3.92-7.53,7.55-23.9,29.18-41.15,47.28-47.65,3.12-1.12,6.55.5,7.67,3.62,1.12,3.12-.5,6.55-3.62,7.67-15.31,5.5-33.58,19.99-39.89,39.97-.81,2.56-3.17,4.19-5.72,4.19Z"/>
+      <path class="sp-4" d="M701.14,432.25c-3.11,0-5.74-2.4-5.98-5.54-.25-3.3,2.22-6.19,5.53-6.44,17.77-1.35,29.14-14.74,33.21-20.43,1.92-2.7,5.67-3.32,8.37-1.4,2.7,1.93,3.32,5.67,1.4,8.37-5.04,7.06-19.24,23.68-42.06,25.42-.16.01-.31.02-.46.02Z"/>
+      <path class="sp-1" d="M871.96,314.86c-.78,0-1.57-.15-2.31-.46-1.93-.8-3.3-2.55-3.62-4.62l-4.64-30.01-28.25,29.43c-2.29,2.39-6.09,2.47-8.48.17-2.39-2.29-2.47-6.09-.17-8.48l36.66-38.18c1.58-1.65,3.96-2.25,6.13-1.57,2.18.69,3.77,2.55,4.12,4.81l4.99,32.31,41.69-30.15c2.68-1.94,6.43-1.34,8.38,1.35,1.94,2.69,1.34,6.44-1.35,8.38l-49.64,35.89c-1.04.75-2.27,1.14-3.52,1.14Z"/>
+      <path class="sp-6" d="M870.83,200.83c0-.58-.36-1.15-1.05-1.33l-6.98-1.77c-11.12-2.82-19.8-14.5-22.62-25.62l-1.77-6.98c-.17-.65-.73-1.05-1.24-1.05s-1.07.39-1.24,1.05l-1.77,6.98c-2.82,11.12-11.5,22.8-22.62,25.62l-6.98,1.77c-.69.17-1.04.75-1.05,1.33,0,.58.36,1.15,1.05,1.33l6.98,1.77c11.12,2.82,19.8,14.5,22.62,25.62l1.77,6.98c.17.65.73,1.05,1.24,1.05s1.07-.39,1.24-1.05l1.77-6.98c2.82-11.12,11.5-22.8,22.62-25.62l6.98-1.77c.69-.17,1.04-.75,1.05-1.33Z"/>
+      <path class="sp-5" d="M918.09,159.09c0-.26-.16-.51-.47-.59l-3.1-.79c-4.94-1.25-8.79-6.44-10.04-11.37l-.79-3.1c-.07-.29-.32-.46-.55-.46s-.48.17-.55.46l-.79,3.1c-1.25,4.94-5.11,10.12-10.04,11.37l-3.1.79c-.31.08-.46.33-.47.59,0,.26.16.51.47.59l3.1.79c4.94,1.25,8.79,6.44,10.04,11.37l.79,3.1c.07.29.32.46.55.46s.48-.17.55-.46l.79-3.1c1.25-4.94,5.11-10.12,10.04-11.37l3.1-.79c.31-.08.46-.33.47-.59Z"/>
+      <path class="sp-7" d="M914.6,228.46c0-.22-.14-.44-.4-.5l-2.63-.67c-4.19-1.06-7.46-5.47-8.53-9.66l-.67-2.63c-.06-.25-.27-.39-.47-.39s-.4.15-.47.39l-.67,2.63c-1.06,4.19-4.34,8.59-8.53,9.66l-2.63.67c-.26.07-.39.28-.4.5,0,.22.14.44.4.5l2.63.67c4.19,1.06,7.46,5.47,8.53,9.66l.67,2.63c.06.25.27.39.47.39s.4-.15.47-.39l.67-2.63c1.06-4.19,4.34-8.59,8.53-9.66l2.63-.67c.26-.07.39-.28.4-.5Z"/>
+      <path class="sp-3" d="M859.5,349.32c0-.22-.14-.45-.41-.51l-2.7-.69c-4.3-1.09-7.66-5.61-8.75-9.92l-.69-2.7c-.06-.25-.28-.4-.48-.4s-.42.15-.48.4l-.69,2.7c-1.09,4.3-4.45,8.82-8.75,9.92l-2.7.69c-.27.07-.4.29-.41.51,0,.22.14.45.41.51l2.7.69c4.3,1.09,7.66,5.61,8.75,9.92l.69,2.7c.06.25.28.4.48.4s.42-.15.48-.4l.69-2.7c1.09-4.3,4.45-8.82,8.75-9.92l2.7-.69c.27-.07.4-.29.41-.51Z"/>
+      <path class="sp-3" d="M783,85.23c0-.26-.16-.51-.47-.59l-3.1-.79c-4.94-1.25-8.79-6.44-10.04-11.37l-.79-3.1c-.07-.29-.32-.46-.55-.46s-.48.17-.55.46l-.79,3.1c-1.25,4.94-5.11,10.12-10.04,11.37l-3.1.79c-.31.08-.46.33-.47.59,0,.26.16.51.47.59l3.1.79c4.94,1.25,8.79,6.44,10.04,11.37l.79,3.1c.07.29.32.46.55.46s.48-.17.55-.46l.79-3.1c1.25-4.94,5.11-10.12,10.04-11.37l3.1-.79c.31-.08.46-.33.47-.59Z"/>
+      <g>
+        <path class="sp-1" d="M594.03,96.73l-39.99-41.51c-.9-.94-2.34-1.11-3.44-.42l-13.45,8.48c-.44.27-1.01.2-1.35-.19L479.67.9c-1.05-1.17-2.87-1.21-3.98-.1l-49.86,50.1c-.38.38-.98.42-1.4.09l-18.64-14.48c-1.13-.88-2.74-.74-3.71.32l-45.63,50.04s-13.95,14.18-18.48,17.24c-2.77,1.87-7.36,4.82-10.51,6.84-.61.39-.19,1.32.5,1.13,4.51-1.25,11.53-3.29,13.56-4.49,2.89-1.71,32.12-17.85,35.39-19.66.2-.11.39-.24.57-.39,1.28-1.06,6.78-5.69,8.68-8.39,2.15-3.06,18.26-28.56,18.26-28.56.37-.41.99-.46,1.43-.12l18.35,14.25c1.09.85,2.65.75,3.62-.23l48.74-48.98c.43-.43,1.13-.41,1.54.04l56.35,62.43-29.54-6.91c-1.03-.24-1.68,1.06-.88,1.74,5.8,4.92,17.97,15.22,22.82,19.11,5.2,4.18,18.91,14,24.09,17.7.46.33,1.03-.21.74-.69l-10.22-17.03c-.34-.56.23-1.23.84-.99l14.93,6.01c.8.32,1.55-.58,1.06-1.3-2.48-3.72-6.55-12.4-6.74-15.23-.14-2.24-.49-7.92-.77-12.4.22.03.43.13.6.31l34.72,36.05c.41.43,1.09.44,1.52.03l6.37-6.14c.43-.41.44-1.09.03-1.52Z"/>
+        <path class="sp-1" d="M439.96,64.25l-24.03,10.01c-.32.13-.6.35-.81.62l-21.47,27.02c-.5.64.23,1.5.94,1.1,6.24-3.55,19.61-11.38,24.07-15.68,4.62-4.45,16.92-16.87,22.02-22.03.5-.5-.06-1.32-.72-1.05Z"/>
+      </g>
+      <path class="sp-2" d="M530.85,145.95c-.37.02-.44-.53-.08-.6,10.11-2.01,38.06-8.61,67.66-24.8,31.79-17.38,60.38-40.29,67.96-46.53,1.14-.94,2.78-.93,3.91.02l56.03,47.13c.64.54,0,1.56-.76,1.21l-30.92-14.21c-.51-.24-1.02.34-.72.82l5.97,9.45c.42.66-.25,1.48-.98,1.2l-21.33-8.03c-.48-.17-.37-.87.14-.88l8.7-.19c.7-.08,1.07-.87.67-1.46-1.85-2.69-6.37-8.68-10.33-9.5-1.96-.41-3.58-.6-4.82-.68-1.54-.1-2.6-1.57-2.18-3.06l1.27-4.51c.07-.52,0-1.05-.19-1.54l-1.61-4.07c-.35-.88-1.5-1.08-2.13-.38l-12.79,14.23-3.72,8.15-18.78,13.22c-.66.46-1.46-.34-1-1l5.93-8.44c.25-.35-.13-.8-.52-.61l-41.64,20.06c-.46.22-.93.42-1.42.6-5.16,1.92-36.13,13.09-62.32,14.39Z"/>
+      <path class="sp-7" d="M840.44,434.91c-1.84-2.01-3.4-3.83-5.27-6.26-2.12-2.75-4.08-5.37-5.22-7.4-.44-.79.13-1.76,1.04-1.76h4.14c1.04,0,1.54-1.2.87-1.99-1.34-1.58-3.21-4.14-4.74-6.01-1.62-1.98-2.69-3.9-3.4-5.37-.38-.79.03-1.38.91-1.38h2.39c.96,0,1.52-1.09.97-1.87-1.6-2.26-3.52-5.16-5.57-8.26-4.81-7.26-4.17-12.41-7.35-12.41s-2.54,5.15-7.35,12.41c-2.05,3.1-3.97,5.99-5.57,8.26-.56.79,0,1.87.97,1.87h2.39c.88,0,1.29.59.91,1.38-.71,1.47-1.78,3.39-3.4,5.37-1.53,1.86-3.4,4.43-4.74,6.01-.67.79-.17,1.99.87,1.99h4.14c.91,0,1.48.97,1.04,1.76-1.14,2.03-3.1,4.64-5.22,7.4-1.87,2.43-3.43,4.26-5.27,6.26-.98,1.06-1.58,1.44-1.46,2.24.07.51.19.84,1.24.85,4.08.04,10.77-.27,16.23-1.03.8-.11,1.54.32,1.54,1.13-.01,3.12-.04,7.48-.06,9.98,0,.9.95,1.47,1.74,1.05,0,0,3.41-2.12,4.25-2.74s1.52-1.02,1.52-1.92c-.02-2.5-.05-3.26-.06-6.38,0-.8.74-1.24,1.54-1.13,5.46.77,12.15,1.08,16.23,1.03,1.06-.01,1.17-.34,1.24-.85.11-.8-.49-1.18-1.46-2.24Z"/>
+      <path class="sp-7" d="M852.67,425.08c2.28-2.48,4.21-4.74,6.53-7.75,2.62-3.41,5.05-6.65,6.46-9.16.55-.98-.16-2.18-1.28-2.18h-5.12c-1.28,0-1.91-1.49-1.08-2.47,1.66-1.95,3.98-5.13,5.87-7.44,2-2.45,3.33-4.83,4.21-6.65.47-.98-.04-1.71-1.13-1.71h-2.97c-1.19,0-1.89-1.34-1.2-2.32,1.98-2.81,4.36-6.39,6.9-10.23,5.96-8.99,5.17-15.37,9.11-15.37s3.15,6.38,9.11,15.37c2.54,3.84,4.92,7.42,6.9,10.23.69.97,0,2.32-1.2,2.32h-2.97c-1.08,0-1.6.73-1.13,1.71.88,1.82,2.2,4.2,4.21,6.65,1.89,2.31,4.21,5.49,5.87,7.44.83.98.2,2.47-1.08,2.47h-5.12c-1.12,0-1.83,1.2-1.28,2.18,1.41,2.51,3.84,5.75,6.46,9.16,2.32,3.01,4.25,5.27,6.53,7.75,1.21,1.32,1.96,1.78,1.81,2.77-.09.64-.23,1.04-1.54,1.05-5.05.05-13.34-.33-20.1-1.28-.99-.14-1.91.4-1.91,1.4.01,3.86.05,9.26.07,12.36,0,1.11-1.17,1.82-2.15,1.3,0,0-4-1.59-5.17-2.14s-1.99-1.02-1.98-2.13c.02-3.1.06-5.53.07-9.39,0-1-.92-1.54-1.91-1.4-6.76.95-15.05,1.33-20.1,1.28-1.31-.01-1.45-.42-1.54-1.05-.14-1,.6-1.46,1.81-2.77Z"/>
+      <path class="sp-7" d="M182.4,483.41c-.85-.14-.77-1.39.09-1.41,14.65-.3,47.91-2.01,71.15-11.12,30.6-11.99,126.05-60.52,210.44-61.89,55.35-.9,91.65,13.49,122.57,26.99,25.99,11.34,70.63,33.79,84.23,40.68.79.4.42,1.58-.46,1.48-15.8-1.84-47.03-7.1-77.89-18.61-23.67-8.82-68.86-24.53-130.68-23.29-80.89,1.62-124.07,23.2-161.74,35.57-35.69,11.72-74.09,18.97-117.71,11.6Z"/>
+      <path class="sp-2" d="M352.33,472.91c-1.29.13-1.68-1.72-.46-2.16,17.69-6.4,66.35-22.43,110.11-22.43,54.68,0,72.06,7.41,112.84,19,28.3,8.04,48.34,13.85,57.95,16.65,1.12.33.89,1.98-.28,1.98-10.83.06-32.42-.2-47.48-2.88-20.85-3.71-74.96-17.55-119.21-18.3-50.62-.86-80.21,4.72-113.48,8.14Z"/>
+      <path class="sp-2" d="M679.32,479.69c-.58-.26-.3-1.13.33-1,8.01,1.67,25.15,4.16,49.49,2.04,34.58-3.02,73.11-19.55,95.4-25.36,31.98-8.33,55.31-8.33,87.29,5.33,11.43,4.88,17.82,8.43,21.39,10.8,1.13.75.24,2.66-1.01,2.11-18.01-7.99-38.91-11.58-51.37-11.74-32.19-.42-41.98,4.49-65.38,11.96s-69.87,19.8-94.9,17.19c-17.84-1.86-33.64-7.97-41.24-11.32Z"/>
+      <path class="sp-3" d="M85.76,345.46c-.01-.74-.46-1.47-1.34-1.69l-8.89-2.26c-14.16-3.59-25.22-18.48-28.82-32.64l-2.26-8.89c-.21-.83-.93-1.33-1.58-1.33s-1.37.5-1.58,1.33l-2.26,8.89c-3.59,14.16-14.65,29.05-28.82,32.64l-8.89,2.26c-.88.22-1.33.96-1.34,1.69.01.74.46,1.47,1.34,1.69l8.89,2.26c14.16,3.59,25.22,18.48,28.82,32.64l2.26,8.89c.21.83.93,1.33,1.58,1.33s1.37-.5,1.58-1.33l2.26-8.89c3.59-14.16,14.65-29.05,28.82-32.64l8.89-2.26c.88-.22,1.33-.96,1.34-1.69Z"/>
+      <path class="sp-4" d="M444.51,158.7c-.16,0-.32,0-.49-.02-3.3-.26-5.77-3.16-5.5-6.46,1.17-14.61,13.5-26.67,26.9-26.27,3.31.09,5.92,2.85,5.83,6.16-.09,3.31-2.82,5.96-6.16,5.83-7.02-.22-13.95,7.07-14.61,15.23-.25,3.14-2.88,5.52-5.97,5.52Z"/>
+      <path class="sp-2" d="M827.97,97.5c.6-.9-.63-1.87-1.37-1.08-26.38,28.21-57.05,52.42-84.59,68.2-30.97,17.74-64.04,27.1-108.41,36.96-.87.19-.74,1.48.15,1.42,35.64-2.71,83.42-7.22,118.39-28.42,43.41-26.33,63.12-58.18,75.83-77.07Z"/>
+      <path class="sp-1" d="M99.41,468.28c0-.22-.14-.44-.4-.5l-2.63-.67c-4.19-1.06-7.46-5.47-8.53-9.66l-.67-2.63c-.06-.25-.27-.39-.47-.39s-.4.15-.47.39l-.67,2.63c-1.06,4.19-4.34,8.59-8.53,9.66l-2.63.67c-.26.07-.39.28-.4.5,0,.22.14.44.4.5l2.63.67c4.19,1.06,7.46,5.47,8.53,9.66l.67,2.63c.06.25.27.39.47.39s.4-.15.47-.39l.67-2.63c1.06-4.19,4.34-8.59,8.53-9.66l2.63-.67c.26-.07.39-.28.4-.5Z"/>
+    </g>
+  </g>
+</svg>
+      <div class="palette" aria-label="ロゴから抽出した配色">
+        <i style="background:#0050D7"></i><i style="background:#05AAFD"></i><i style="background:#FFE54D"></i><i style="background:#F32077"></i><i style="background:#9FCC00"></i>
+      </div>
+      <div class="cap">ロゴの5色・星・ジグザグを、ページ全体の共通言語に</div>
+    </div>
+  </div>
+</section>
+
+<section class="understanding">
+  <div class="wrap fade-in">
+    <div class="section-label">UNDERSTANDING</div>
+    <h2 class="section-title jp-head">案1と案2、それぞれの「強み」を読み解きました。</h2>
+    <p class="section-lead">どちらかを正解にするのではなく、役割を分けて組み合わせるのが今回の最適解だと考えています。</p>
+
+    <div class="cases">
+      <div class="case a">
+        <h4>DESIGN CASE 01</h4>
+        <h3>ポップで、ワクワクする世界観</h3>
+        <div class="wire" aria-hidden="true">
+          <div class="w-hero1"><span>MAX ENJOY HOKKAIDO STAY</span></div>
+          <div class="w-concept">コンセプト文 ＋ 飛行機</div>
+          <div class="w-review-y">Thank you Review!（黄色帯）</div>
+          <div class="w-map-flat">エリアマップ（フラットイラスト）</div>
+        </div>
+        <ul>
+          <li><b>多色のポップな見出し</b>とロゴ由来の星・円・ジグザグ装飾で、ブランドの個性が一目で伝わる</li>
+          <li>「家族旅行・友人・出張」と<b>利用シーンに寄り添うコピー</b></li>
+          <li>黄色の<b>レビュー帯</b>とフラットな<b>北海道マップ</b>で楽しさを演出</li>
+        </ul>
+      </div>
+      <div class="plus">＋</div>
+      <div class="case b">
+        <h4>DESIGN CASE 02</h4>
+        <h3>探しやすく、予約につながる設計</h3>
+        <div class="wire" aria-hidden="true">
+          <div class="w-nav"><span>Spicy</span><span>物件・エリア・FAQ・JP/EN/中文</span></div>
+          <div class="w-hero2">実写ヒーロー＋REVIEWS ★★★★★</div>
+          <div class="w-map2">エリアマップ ＋ 01〜04 エリアリスト</div>
+          <div class="w-row"><i></i><i></i><i></i><i></i></div>
+          <div class="w-search">チェックイン／アウト／人数 検索</div>
+        </div>
+        <ul>
+          <li><b>物件一覧・エリア・ご利用ガイド・FAQ・多言語</b>まで揃ったナビゲーション</li>
+          <li>エリアタブ＋<b>物件カード（人数・間取り・詳細）</b>で比較しやすい</li>
+          <li>星評価付きレビュー、Instagram、選ばれる理由、<b>下部の空室検索バー</b>で予約導線が明快</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="merge-arrow"><span class="arr">↓</span>統合の基本方針</div>
+    <div class="principle">
+      <div><b>骨格は案2</b>ナビ・エリア別物件・検索バーなど、予約につながる情報設計を土台にします。</div>
+      <div><b>表情は案1</b>ポップな見出し・黄色のレビュー帯・コンセプト文で「Spicyらしさ」を前面に。</div>
+      <div><b>つなぎはロゴ</b>配色をロゴの5色に統一し、星・ジグザグ装飾で2案の世界観を1つにまとめます。</div>
+    </div>
+  </div>
+</section>
+
+<section class="plan">
+  <div class="wrap fade-in">
+    <div class="section-label">INTEGRATION PLAN</div>
+    <h2 class="section-title jp-head">統合後のトップページ構成（たたき台）</h2>
+    <p class="section-lead">各セクションでどちらの案を活かすか、どんな“動き”をつけるかの初期案です。Day 1のすり合わせで調整させてください。</p>
+    <div class="plan-list">
+      <div class="plan-item">
+        <div class="plan-no">01</div>
+        <div><span class="src b">案2</span><h3>ヘッダー／ナビゲーション</h3><p>物件一覧・エリア・ご利用ガイド・FAQ・お気に入り・JP/EN/中文。SPはハンバーガーメニューに集約。</p></div>
+        <div class="motion"><b>MOTION</b>スクロールで高さが縮み、上部に追従</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">02</div>
+        <div><span class="src b">案2</span><span class="src a">案1</span><h3>ファーストビュー</h3><p>案2の開放的な実写ビジュアルに、案1の多色ポップ見出し「MAX ENJOY HOKKAIDO STAY」を重ねる。</p></div>
+        <div class="motion"><b>MOTION</b>見出しが1文字ずつ弾んで登場、星装飾がきらめく</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">03</div>
+        <div><span class="src a">案1</span><h3>コンセプト</h3><p>「家族との旅行・友人とのイベント・出張にも」のコピーと飛行機モチーフ。</p></div>
+        <div class="motion"><b>MOTION</b>スクロールに合わせて飛行機の軌跡が描かれる</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">04</div>
+        <div><span class="src a">案1</span><span class="src b">案2</span><h3>レビュー</h3><p>案1の黄色い帯の上に、案2の星評価・実テキスト付きカード（agoda / Booking.com / Google / Airbnb）。</p></div>
+        <div class="motion"><b>MOTION</b>カードが横方向にゆっくり自動ループ、SPはスワイプ対応</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">05</div>
+        <div><span class="src b">案2</span><span class="src a">案1</span><h3>エリアから探す（北海道マップ）</h3><p>案2の番号ピン＋エリアリスト（定山渓・札幌・小樽・富良野／美瑛）を、案1寄りのフラットなイラストで。</p></div>
+        <div class="motion"><b>MOTION</b>ピンとリストがホバーで連動して光り、下の物件タブに切り替わる</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">06</div>
+        <div><span class="src b">案2</span><h3>エリア別 物件カード</h3><p>エリアタブ＋物件カード（写真・物件名・人数・間取り・詳細ボタン・お気に入り）。</p></div>
+        <div class="motion"><b>MOTION</b>タブ切替でカードがふわっと入れ替わる、写真はホバーで軽くズーム</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">07</div>
+        <div><span class="src b">案2</span><h3>Instagram ／ 選ばれる理由</h3><p>6枚の写真グリッドと、4つのアイコン（おしゃれな空間・観光地アクセス・少人数〜大人数・サポート体制）。</p></div>
+        <div class="motion"><b>MOTION</b>アイコンが順番にポップイン</div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-no">08</div>
+        <div><span class="src b">案2</span><h3>空室検索バー ＋ フッター</h3><p>チェックイン／チェックアウト／人数の検索バーと、ブルーの波形フッター。</p></div>
+        <div class="motion"><b>MOTION</b>ファーストビュー通過後に画面下へ固定表示（SPはボタン1つに集約）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reference">
+  <div class="wrap fade-in">
+    <div class="section-label">REFERENCE</div>
+    <h2 class="section-title jp-head">参考サイトから読み取った「動き」の方向性</h2>
+    <p class="section-lead">ご提示いただいた参考サイトに共通する、遊び心のあるイラスト・手描き風の装飾・ストーリー性のある見せ方を、Spicyの世界観に置き換えて取り入れます。</p>
+    <div class="ref-grid">
+      <div class="ref-item"><h3>手描き風の装飾が、ページの中で生きている</h3><p>線・円・シェイプのSVG装飾がセクションを彩る作り。</p><span class="to">→ ロゴの星・ジグザグ・円をSVG化し、ゆっくり浮遊・きらめかせます</span></div>
+      <div class="ref-item"><h3>写真・動画で魅せるファーストビュー</h3><p>複数のキービジュアルやループ動画で、最初の数秒で世界観を伝える構成。</p><span class="to">→ 北海道の風景・客室写真をクロスフェードで切り替え（動画素材があればループ再生にも対応）</span></div>
+      <div class="ref-item"><h3>文字そのものが動く見出し</h3><p>1文字ずつ分割した見出しやロゴが、順番に現れる演出。</p><span class="to">→「MAX ENJOY HOKKAIDO STAY」をポップに弾ませて登場させます</span></div>
+      <div class="ref-item"><h3>スライダーと、楽しいメニュー</h3><p>一覧のスライダーや、開くと世界観が広がるメニュー画面。</p><span class="to">→ レビュー・物件カードをスライダー化し、SPメニューは装飾付きの全画面表示に</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="wrap fade-in">
+    <div class="section-label">WHAT WE PROVIDE</div>
+    <h2 class="section-title jp-head">Kairosが提供できる価値</h2>
+    <div class="value-grid">
+      <div class="value-card"><span class="num">01</span><h3>デザイン統合力</h3><p>2案のレイアウト・配色・余白を見比べ、ロゴを軸に1つのブランド表現として整えます。</p></div>
+      <div class="value-card"><span class="num">02</span><h3>最速での可視化</h3><p>AIコーディング支援や効率的な開発フローで、早い段階からNetlify / Vercel等のブラウザ確認環境を共有します。</p></div>
+      <div class="value-card"><span class="num">03</span><h3>動きの実装力</h3><p>文字の登場、マップとタブの連動、レビューのループなど、静止画では伝わらない“体験”をHTML/CSS/JSで再現します。</p></div>
+      <div class="value-card"><span class="num">04</span><h3>レスポンシブ品質</h3><p>情報量の多い案2の構成も、スマホで窮屈にならないよう並び・余白・固定要素を最適化します。</p></div>
+      <div class="value-card"><span class="num">05</span><h3>そのまま使える納品</h3><p>HTML/CSS/JS一式を、別環境に設置してもそのまま再現できる形で整理して納品。微調整にも柔軟に対応します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="deliverables">
+  <div class="wrap fade-in">
+    <div class="section-label">DELIVERABLES</div>
+    <h2 class="section-title jp-head">納品物</h2>
+    <p class="section-lead">別の環境に置いても、確認環境と同じ表示・動作になる状態でお渡しします。</p>
+    <div class="deliv">
+      <div class="deliv-box">
+        <h3>Webページ一式</h3>
+        <ul>
+          <li><b>HTML / CSS / JavaScript</b> ファイル</li>
+          <li>使用した<b>画像・SVG素材</b></li>
+          <li>フォント指定など、表示に必要なその他のファイル</li>
+          <li>外部サーバーに依存しない<b>相対パス構成</b>（フォルダごと設置すれば同じ動作）</li>
+        </ul>
+      </div>
+      <div class="deliv-box">
+        <h3>デザイン関連データ</h3>
+        <ul>
+          <li>描き起こした<b>見出し・装飾・アイコンのSVG</b>（Illustratorで開いて編集可能）</li>
+          <li>完成ページの<b>PC／スマートフォン全体キャプチャ</b>（PNG・PDF）</li>
+        </ul>
+        <p class="note">今回はブラウザ上で直接デザインを仕上げる進め方のため、ページ全体をレイヤー分けしたIllustrator／Photoshopのカンプは標準の範囲外としています。カンプ形式が必要な場合は、範囲とお見積りをご相談させてください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="confirm">
+  <div class="wrap fade-in">
+    <div class="section-label">BEFORE WE START</div>
+    <h2 class="section-title jp-head">着手前に確認させてください</h2>
+    <p class="section-lead">ご予算・納期の中で確実に仕上げるため、以下の範囲を最初にすり合わせます。</p>
+    <div class="confirm-grid">
+      <div class="confirm-item"><h3>検索バー・お気に入り・言語切替・Instagram</h3><p>今回は見た目と画面上の動きまでの実装（Instagramは静的な画像グリッド、物件はサンプルデータ）で、予約システム等との連携は別工程という理解でよいか。</p></div>
+      <div class="confirm-item"><h3>写真素材</h3><p>ご提供素材はデザイン案画像とロゴのみと伺っています。写真はデザイン案からの切り出し、または近い雰囲気のフリー素材で仮置きし、本番写真は後から差し替える形でよいか。</p></div>
+      <div class="confirm-item"><h3>デザイン元データの形式</h3><p>SVG素材と全体キャプチャでのご提供で足りるか、Illustrator／Photoshop形式のカンプが必須か。</p></div>
+      <div class="confirm-item"><h3>ポップ見出しの再現方法</h3><p>元データがない前提で、案1の英字見出しは近い雰囲気のWebフォント、またはSVGで描き起こして再現します。どちらにするかは初回共有の際にご判断ください。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="wrap fade-in">
+    <div class="section-label">HOW WE WORK</div>
+    <h2 class="section-title jp-head">進め方とスケジュールイメージ</h2>
+    <div class="timeline">
+      <div class="step"><div class="step-num">01</div><div class="step-body"><h3>素材受領＆方向性すり合わせ<span class="step-tag">Day 1</span></h3><p>デザイン案1・案2・ロゴをお預かりし、上記の統合構成と確認事項を短くすり合わせます。</p></div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-body"><h3>まず「全体が動く形」で共有<span class="step-tag">Day 2-3</span></h3><p>細部を作り込む前に、統合した全体レイアウトと主要なスクロールアニメーションを組み、Netlify / Vercelで共有。トーンと方向性を先にご確認いただきます。</p></div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-body"><h3>ブラッシュアップ＆作り込み<span class="step-tag">Day 4-5</span></h3><p>いただいたご意見をもとに配色・余白・装飾を整え、ホバー・タブ切替・マップ連動などの動きとPC／スマートフォンの表示を仕上げます。</p></div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-body"><h3>確認環境の更新<span class="step-tag">随時</span></h3><p>同じURLを更新し続けるので、いつでも最新の状態をブラウザで確認いただけます。</p></div></div>
+      <div class="step"><div class="step-num">05</div><div class="step-body"><h3>微調整・納品<span class="step-tag">Final</span></h3><p>最終調整を反映し、HTML/CSS/JS一式・使用素材・デザイン関連データをまとめて納品いたします。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="closing-bg"></div>
+  <div class="closing-inner fade-in">
+    <h2>ポップさと、探しやすさ。<br>その両立を、Kairosにお任せください。</h2>
+    <p>自己紹介・実績ポートフォリオ・使用予定の制作ツールをご用意し、ご提案内容の詳細をお話しさせてください。まずは一度、カジュアルにお話しできればと思います。</p>
+    <a class="cta-btn" href="#">Kairosに相談してみる →</a>
+    <div class="closing-note">ご予算 ¥55,000 ／ 想定納期 5〜7日目安（素材受領後）</div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><span class="logo-mark"></span>Kairos</div>
+  <div>Web制作・システム開発チーム Kairos ｜ SS Designs様（Spicy）向けご提案資料</div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    items.forEach(i=>obs.observe(i));
+  } else {
+    items.forEach(i=>i.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
